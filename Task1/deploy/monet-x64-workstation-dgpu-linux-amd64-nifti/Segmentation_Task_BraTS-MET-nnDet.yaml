@@ -1,0 +1,5 @@
+tasks:
+  BraTS-MET-NNDET:
+    Modalities:
+      image:
+        File_Pattern: "_image.nii.gz"

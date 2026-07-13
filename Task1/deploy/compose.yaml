@@ -1,0 +1,21 @@
+services:
+  monet-segmentation:
+    image: brats-met-nndet:1.1
+    container_name: monet-segmentation
+    environment:
+      - SEGMENTATION_TASK_CONFIG_FILE=/etc/holoscan/Segmentation_Task.yaml
+      - SEGMENTATION_TASK_NAME=BraTS-MET-NNDET
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./BraTS-MET-00833-000:/input
+      - ./predictions:/var/holoscan/output
+    runtime: nvidia
+    shm_size: 2g
+    deploy:
+      resources:
+        limits:
+          memory: 16g
+          cpus: 2
+        reservations:
+          devices:
+            - capabilities: [gpu]
