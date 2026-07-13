@@ -2,6 +2,7 @@
 
 This repository contains the code for participating in **Task 1** and **Task 4** of the [BraTS 2026 Challenge](https://www.synapse.org/Synapse:syn74274097/challenge/).
 
+> **Important:** Model checkpoints are not included in this repository yet. They will be published soon in a [GitHub release](https://github.com/minnelab/BraTS-2026/releases).
 
 ## Repository structure
 
@@ -83,9 +84,6 @@ The default `compose.yaml` requests:
 - 16 GB RAM
 - 2 CPUs
 - 2 GB shared memory (`shm_size`)
-
----
-
 
 ---
 
