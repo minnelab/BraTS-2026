@@ -150,8 +150,8 @@ RUN apt-get install python3-distutils
 RUN apt-get install python3-setuptools
 
 USER $UNAME
-COPY ./models  /opt/holoscan/models
-
+#COPY ./models  /opt/holoscan/models
+COPY BraTS-MET.zip /opt/holoscan/models
 
 COPY ./map/app.json /etc/holoscan/app.json
 COPY ./app.config /var/holoscan/app.yaml
@@ -258,6 +258,22 @@ RUN mkdir -p /opt/data/Task101_BraTS-MET-2026/raw_splitted/imagesTs
 RUN chmod -R 777 /opt/data/Task101_BraTS-MET-2026/raw_splitted/imagesTs
 USER $UNAME
 RUN mkdir -p /home/holoscan/.config/matplotlib
+
+ENV nnUNet_raw_data_base=/opt/nnUNet/raw_data
+ENV nnUNet_preprocessed=/opt/nnUNet/preprocessed
+ENV nnUNet_results=/opt/nnUNet/results
+
+USER root
+RUN mkdir -p /opt/nnUNet/raw_data
+RUN chmod -R 777 /opt/nnUNet/raw_data
+RUN mkdir -p /opt/nnUNet/preprocessed
+RUN mkdir -p /opt/nnUNet/results
+RUN chmod -R 777 /opt/nnUNet/preprocessed
+RUN chmod -R 777 /opt/nnUNet/results
+COPY ./postprocess.py /var/holoscan/postprocess.py
+RUN chmod +x /var/holoscan/postprocess.py
+USER $UNAME
+RUN nnUNetv2_install_pretrained_model_from_zip /opt/holoscan/models
 
 #ENTRYPOINT ["/var/holoscan/tools"]
 #ENTRYPOINT ["sleep", "infinity"]       
