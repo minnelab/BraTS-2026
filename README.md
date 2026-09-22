@@ -1,5 +1,7 @@
 # BraTS 2026
 
+[![DOI](https://zenodo.org/badge/1299296827.svg)](https://doi.org/10.5281/zenodo.22898031)
+
 This repository contains the code for participating in **Task 1** and **Task 4** of the [BraTS 2026 Challenge](https://www.synapse.org/Synapse:syn74274097/challenge/).
 
 > **Important:** Model checkpoints are not included in this repository yet. They will be published soon in a [GitHub release](https://github.com/minnelab/BraTS-2026/releases).
